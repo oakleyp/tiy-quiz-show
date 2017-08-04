@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get 'welcome/index' => 'welcome#index'
 
   get '/login', to: 'sessions#new', as: 'login'
+  post 'login' => 'sessions#create'
 
-  get '/logout', to: 'sessions#destroy', as: 'logout'
+  delete 'logout' => 'sessions#destroy'
 
   get '/register', to: 'users#new', as: 'register'
 
