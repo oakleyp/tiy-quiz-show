@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170804152835) do
   enable_extension "plpgsql"
 
   create_table "quizzes", force: :cascade do |t|
-    t.integer "admin_id"
+    t.integer "user_id"
     t.boolean "published"
     t.text "qajson"
     t.datetime "created_at", null: false

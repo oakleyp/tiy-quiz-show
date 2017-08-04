@@ -1,0 +1,41 @@
+//Quiz 'qajson' Example:
+
+/*
+[
+  {
+    "question": "Who is the current U.S. President?",
+    "answers": [
+      "George Clooney",
+      "Mark Wahlberg",
+      "Donald Trump",
+      "Sarah Palin"
+    ],
+    "correct": "Donald Trump"
+  },
+  {
+    "question": "What color is the sky?",
+    "answers": [
+      ""
+    ],
+    "correct": ""
+  }
+  //...
+]
+*/
+
+//Submission 'qajson' Example:
+/*
+[
+  {
+    "question": "Who is the current U.S. President?",
+    "answers": [
+      "George Clooney",
+      "Mark Wahlberg",
+      "Donald Trump",
+      "Sarah Palin"
+    ],
+    "correct": "Donald Trump",
+    "selected": "George Clooney"
+  }
+]
+*/
