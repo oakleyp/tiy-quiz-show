@@ -1,3 +1,18 @@
 <h1>Edit Quiz</h1>
 
 <%= render 'form', quiz: @quiz %>
+
+<script type="text/javascript">
+  newQuestionBtn = document.getElementById('newquestionbtn');
+  quizBuilder = new QuizBuilder('<%= raw(@quiz.qajson.to_s) %>');
+
+  //Create all forms for previously saved questions
+  quizBuilder.createFormsFromJSON();
+
+  quizBuilder.createJSONStrFromForms();
+
+  newQuestionBtn.addEventListener('click', function(event) {
+    quizBuilder.appendBlankForm();
+  });
+  
+</script>
