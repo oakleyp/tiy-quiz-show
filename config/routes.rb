@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   post 'login' => 'sessions#create'
 
+  get 'publish/:id', to: 'quizzes#publish', as: 'publish_quiz'
+
   delete 'logout' => 'sessions#destroy'
 
   get '/register', to: 'users#new', as: 'register'
