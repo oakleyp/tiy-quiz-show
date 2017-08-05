@@ -1,5 +1,9 @@
 class QuizzesController < ApplicationController
+  before_action :require_user
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+
   def new
+    @quiz = Quiz.new
   end
 
   def create
@@ -15,5 +19,11 @@ class QuizzesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private 
+
+  def set_quiz
+    @quiz = Quiz.find(params[:id])
   end
 end

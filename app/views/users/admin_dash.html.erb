@@ -1,2 +1,16 @@
 <%= notice %>
 <h1>Admin Dashboard</h1>
+
+<h3>Unpublished Quizzes:</h3>
+<ul>
+<% @unpub_quizzes.map do |quiz| %>
+  <li><%= link_to quiz.title, quiz_path(quiz) %></li>
+<% end %>
+</ul>
+
+<h3>Published Quizzes</h3>
+<ul>
+<% @pub_quizzes.map do |quiz| %>
+  <li><% link_to quiz.title, quiz_path(quiz) %></li>
+<% end %>
+</ul>

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_quizzes, only: :show
 
   def new
     @user = User.new
@@ -39,6 +40,11 @@ class UsersController < ApplicationController
 
   def set_user
       @user = User.find(params[:id])
+  end
+
+  def set_quizzes 
+    @unpub_quizzes = Quiz.where({ user_id: current_user.id, published: false })
+    @pub_quizzes = Quiz.where({ user_id: current_user.id, published: true })
   end
 
   def user_params
