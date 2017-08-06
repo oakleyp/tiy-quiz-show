@@ -1,3 +1,56 @@
 <h1>Edit Quiz</h1>
 
 <%= render 'form', quiz: @quiz %>
+
+<script type="text/javascript">
+
+  //Script is getting included twice for some reason, had to do declaration this way
+  //Will check this out if not working on other browsers.
+
+  newQuestionBtn = document.getElementById('newquestionbtn');
+  quizBuilder = new QuizBuilder('<%= raw(@quiz.qajson.to_s) %>');
+
+  //Create editable question forms from saved json data
+  quizBuilder.createFormsFromJSON();
+
+  //Create new question form when new question button clicked
+  newQuestionBtn.addEventListener('click', function(event) {
+    quizBuilder.appendBlankForm();
+  });
+
+  //Override form submit, so that qajson can be built 
+  $('#quiz_form').submit(function(event) {
+    event.preventDefault();
+
+    //Create the new form, to contain title and qajson as hidden inputs, along with some rails required fields
+    let newform = document.createElement('form');
+    newform.setAttribute('method', 'post');
+    newform.setAttribute('action', '<%= quiz_path(@quiz) %>');
+    
+    //Adds quiz title field
+    let titleinput = document.createElement('input');
+    titleinput.setAttribute('type', 'hidden');
+    titleinput.setAttribute('name', 'quiz[title]');
+    titleinput.setAttribute('value', quizBuilder.getQuizTitle());
+
+    //Adds qajson field with json str built from forms
+    let qajsoninput = document.createElement('input');
+    qajsoninput.setAttribute('type', 'hidden');
+    qajsoninput.setAttribute('name', 'quiz[qajson]');
+    qajsoninput.setAttribute('value', quizBuilder.createJSONStrFromForms());
+
+
+    newform.appendChild(titleinput);
+    newform.appendChild(qajsoninput);
+
+    //Adds method field, auth token, and utf8
+    newform.innerHTML += '<input name="utf8" type="hidden" value="✓">';
+    newform.innerHTML += '<input type="hidden" name="_method" value="patch">';
+    newform.innerHTML += '<%= token_tag nil %>';
+
+
+    document.body.appendChild(newform);
+    newform.submit();
+  });
+  
+</script>
