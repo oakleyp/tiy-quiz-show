@@ -18,6 +18,15 @@
     quizBuilder.appendBlankForm();
   });
 
+  //Get delete button clicks
+  document.querySelector('body').addEventListener('click', function(event) {
+    if(event.target.tagName.toLowerCase() === 'button' && event.target.classList.contains("deletebtn")) {
+      let deleteid = event.target.id.replace("delete-question-", "");
+      deleteid = "questionform" + deleteid;
+      quizBuilder.removeFormById(deleteid);
+    }
+  })
+
   //Override form submit, so that qajson can be built 
   $('#quiz_form').submit(function(event) {
     event.preventDefault();

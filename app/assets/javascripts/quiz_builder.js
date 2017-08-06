@@ -7,14 +7,14 @@ class QuizBuilder {
     this.questionWrapper = document.getElementById(qwrapperid);
   }
 
-  //Creates editable forms from saved qajson
+  //Creates editable forms from saved qajson and appends to questionWrapper
   createFormsFromJSON() {
     if(this.qajson) {
       let jsonarr = this.qajson;
       for(var i = 0; i < jsonarr.length; i++) {
         let qdata = jsonarr[i];
         let newform = this.createQuestionForm(qdata["question"], qdata["answers"], qdata["correct"]);
-        this.questionWrapper.appendChild(newform);
+        if(newform) this.questionWrapper.appendChild(newform);
       }
     }
   }
@@ -24,6 +24,7 @@ class QuizBuilder {
     if(answersarr.length >= 4) {
       let newq = document.createElement('li');
       newq.className = 'question';
+      newq.setAttribute('id', `questionform${(this.countQuestionForms() + 1)}`);
 
       newq.innerHTML = `<div class="question-input-wrapper"> \
                         <span>Question: </span> \
@@ -41,18 +42,32 @@ class QuizBuilder {
                       <div class="correct-answer-wrapper"> \
                           <span>Correct Answer: </span> \
                           <input class="answer-input" value="${correctanswer}"> \
+                      </div>
+                      <div class="question-options-wrapper"> \
+                          <button id="delete-question-${this.countQuestionForms() + 1}" class="deletebtn btn btn-danger">Delete question</button>
                       </div>`;
 
       return newq;
     }
   }
 
+  removeFormById(id) {
+    let removeElem = document.getElementById(id);
+    if(removeElem)
+      this.questionWrapper.removeChild(removeElem)
+  }
+
+  countQuestionForms() {
+    return this.questionWrapper.children.length;
+  }
+
   //Appends a blank question form to the questionWrapper element
   appendBlankForm() {
     let newQuestionForm = document.createElement('li');
-
+    newQuestionForm.setAttribute('id', 'questionform' + (this.countQuestionForms() + 1))
     newQuestionForm.className = "question";
-    newQuestionForm.innerHTML = '<div class="question-input-wrapper"> \
+
+    newQuestionForm.innerHTML = `<div class="question-input-wrapper"> \
                           <span>Question: </span> \
                           <input class="question-input"> \
                         </div> \
@@ -68,7 +83,10 @@ class QuizBuilder {
                         <div class="correct-answer-wrapper"> \
                             <span>Correct Answer: </span> \
                             <input class="answer-input"> \
-                        </div>';
+                        </div> \
+                        <div class="question-options-wrapper"> \
+                          <button id="delete-question-${this.countQuestionForms() + 1}" class="deletebtn btn btn-danger">Delete question</button>
+                        </div>`;
 
     this.questionWrapper.appendChild(newQuestionForm);
   }
