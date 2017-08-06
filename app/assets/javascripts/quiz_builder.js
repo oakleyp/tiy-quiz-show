@@ -19,6 +19,7 @@ class QuizBuilder {
     }
   }
 
+  //Returns an editable form given a question, array of answers, and correct answer
   createQuestionForm(question, answersarr, correctanswer) {
     if(answersarr.length >= 4) {
       let newq = document.createElement('li');
@@ -76,8 +77,9 @@ class QuizBuilder {
     this.questionWrapper.appendChild(newQuestionForm);
   }
 
-  getChildElemsByClassName(parent, classname) {
-
+  //Returns title input of form
+  getQuizTitle() {
+    return document.getElementById('quiz_title').value;
   }
 
   createJSONStrFromForms() {
@@ -100,7 +102,7 @@ class QuizBuilder {
       if(question.length > 5 && correct.length >= 1) {
         //Check each answer
         for(var x = 0; x < answers.length; x++) {
-          let answer = answers[i];
+          let answer = answers[x];
           if(answer.value == '') valid = false;
           else {
             cleananswers.push(answer.value.replace(/[&<>"'`=\/]/g, ''));
