@@ -1,3 +1,11 @@
 <%= notice %>
 <h1>Student Dashboard</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<h3>Available Quizzes</h3>
+<table class="table table-striped">
+<% @available_quizzes.map do |quiz| %>
+  <tr>
+    <td><%= link_to quiz.title, quiz_path(quiz) %></td>
+  </tr>
+<% end %>
+</table>

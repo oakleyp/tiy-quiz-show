@@ -100,6 +100,7 @@ class QuizBuilder {
     return document.getElementById('quiz_title').value;
   }
 
+  //Returns a json string from question forms
   createJSONStrFromForms() {
     let qNodes = this.questionWrapper.children;
 
@@ -148,6 +149,7 @@ class QuizBuilder {
     console.log(JSON.stringify(qa_objects));
     return JSON.stringify(qa_objects);
   }
+
 
 
 

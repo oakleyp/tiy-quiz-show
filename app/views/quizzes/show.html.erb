@@ -4,3 +4,12 @@
     <%= link_to 'Edit Quiz', edit_quiz_path(@quiz) %>
   <% end %>
 <% end %>
+
+<% if current_user && current_user.role == "user" && @quiz.published %>
+  <% @qa_hash.each do |obj| %>
+    <% obj.each do |key, value| %>
+    <% end %>
+  <% end %>
+<% end %>
+
+

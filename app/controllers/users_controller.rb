@@ -43,8 +43,12 @@ class UsersController < ApplicationController
   end
 
   def set_quizzes 
-    @unpub_quizzes = Quiz.where({ user_id: current_user.id, published: false })
-    @pub_quizzes = Quiz.where({ user_id: current_user.id, published: true })
+    if current_user && current_user.role == 'admin'
+      @unpub_quizzes = Quiz.where({ user_id: current_user.id, published: false })
+      @pub_quizzes = Quiz.where({ user_id: current_user.id, published: true })
+    else 
+      @available_quizzes = Quiz.where({ published: true })
+    end
   end
 
   def user_params

@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :require_user
-  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy, :publish]
   before_action :set_quiz, only: [:show, :edit, :update, :destroy, :publish]
 
   def new
@@ -31,6 +31,7 @@ class QuizzesController < ApplicationController
   end
 
   def show
+    @qa_hash = JSON.parse(@quiz.qajson).to_a
   end
 
   def destroy
