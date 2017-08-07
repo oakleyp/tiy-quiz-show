@@ -1,2 +1,15 @@
-<h1>Quizzes#show</h1>
-<p>Find me in app/views/quizzes/show.html.erb</p>
+<h1><%= @quiz.title %></h1>
+<% if current_user && current_user.role == "admin" %>
+  <% if !@quiz.published %>
+    <%= link_to 'Edit Quiz', edit_quiz_path(@quiz) %>
+  <% end %>
+<% end %>
+
+<% if current_user && current_user.role == "user" && @quiz.published %>
+  <% @qa_hash.each do |obj| %>
+    <% obj.each do |key, value| %>
+    <% end %>
+  <% end %>
+<% end %>
+
+

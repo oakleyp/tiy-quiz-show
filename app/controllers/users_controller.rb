@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  has_many :submissions, :dependent => :destroy
+
+  before_action :set_quizzes, only: :show
+
+
   def new
     @user = User.new
   end
@@ -39,6 +42,16 @@ class UsersController < ApplicationController
 
   def set_user
       @user = User.find(params[:id])
+  end
+
+  def set_quizzes
+    if current_user && current_user.role == 'admin'
+      @unpub_quizzes = Quiz.where({ user_id: current_user.id, published: false })
+      @pub_quizzes = Quiz.where({ user_id: current_user.id, published: true })
+    elsif current_user && current_user.role == 'user'
+      @available_quizzes = Quiz.where({ published: true })
+      @complete_submissions = Submission.where({ user_id: current_user.id, complete: true })
+    end
   end
 
   def user_params

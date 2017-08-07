@@ -26,6 +26,7 @@ User.create(
 # Quiz Seeds
 Quiz.create(
   user_id: 1,
+  title: "Fake Quiz",
   published: false,
   qajson: '[{"question":"Who is the current U.S. President?","answers":["George Clooney","Mark Wahlberg","Donald Trump","Sarah Palin"],"correct":"Donald Trump"},{"question":"What color is the sky?","answers":["Green","Blue","Turquoise","Magenta"],"correct":"Blue"},{"question":"What is ruby","answers":["A language","A gem","A sport","An airline"],"correct":"A gem"}]'
 )

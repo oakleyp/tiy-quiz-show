@@ -11,8 +11,11 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
-  def quiz_score
-    scores = User.joins(submissions: :score).maximum( group: 'users.id')
 
+  def require_admin
+    if current_user.role != "admin"
+      redirect_to '/login', notice: "You must be an administrator to access this page."
     end
+  end
+
 end
