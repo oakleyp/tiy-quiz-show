@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  has_many :submissions, :dependent => :destroy
   def new
     @user = User.new
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user && (current_user.id == @user.id)
       render 'admin_dash' if current_user.role == 'admin'
       render 'student_dash' if current_user.role == 'user'
-    else 
+    else
       redirect_to login_path, notice: "You do not have permission to view this page."
     end
   end
