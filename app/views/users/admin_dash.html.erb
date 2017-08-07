@@ -62,7 +62,7 @@
             <tr>
               <td><%= Quiz.find(submission.quiz_id).title %></td>
               <td><%= User.find(submission.user_id).name %></td>
-              <td><%= submission.correct / submission.possible %>
+              <td><%= submission.correct / submission.possible %></td>
             </tr>
           <% end %>
           </table>
