@@ -1,15 +1,39 @@
-<h1><%= @quiz.title %></h1>
-<% if current_user && current_user.role == "admin" %>
-  <% if !@quiz.published %>
-    <%= link_to 'Edit Quiz', edit_quiz_path(@quiz) %>
-  <% end %>
-<% end %>
 
-<% if current_user && current_user.role == "user" && @quiz.published %>
-  <% @qa_hash.each do |obj| %>
-    <% obj.each do |key, value| %>
-    <% end %>
+<section class="container-fluid">
+  <% if current_user && current_user.role == "admin" %>
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="text-center"><%= @quiz.title %>&nbsp;
+      <% if !@quiz.published %>
+          <%= link_to raw('<span class="glyphicon glyphicon-edit text-success" aria-hidden="true"></span>'), edit_quiz_path(@quiz) %>
+      <% end %>
+    </div>
+  </div>
   <% end %>
-<% end %>
+
+  <% if current_user && current_user.role == "user" && @quiz.published %>
+  <div class="row">
+    <h1 class="text-center"><%= @quiz.title %></h1>
+  </div>
+
+  <div class="row">
+    <h4 class="text-center">Click the 'Start Quiz' button to take the quiz</h4>
+    <h5 class="text-danger text-center">Note: Once started, all other pages will be inaccessible until the quiz is complete.</h5>
+  </div>
+  <br>
+  <div class="row">
+    <%= form_with(model: @submission, local: true, html: {class: "text-center"}) do |form|%>
+
+    <div class="field">
+      <%= form.hidden_field :quiz_id, value: @quiz.id %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</section>
 
 

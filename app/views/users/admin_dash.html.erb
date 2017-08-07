@@ -11,12 +11,10 @@
       <div class="row">
 
         <div class="col-md-8 col-xs-8">
-
-
           <h4>
             Unpublished Quizzes &nbsp;
             <a href="<%= new_quiz_path %>" class="text-success" data-toggle="tooltip" title="Create New Quiz">
-              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
           </h4>
 
@@ -55,7 +53,18 @@
         <div class="col-md-4 col-xs-4">
           <h4 class="text-center">Recent Submissions</h4>
           <table class="table table-striped">
-
+            <tr>
+              <th>Quiz</th>
+              <th>User</th>
+              <th>Percent Correct</th>
+            </tr>
+          <% @complete_submissions.each do |submission| %>
+            <tr>
+              <td><%= Quiz.find(submission.quiz_id).title %></td>
+              <td><%= User.find(submission.user_id).name %></td>
+              <td><%= submission.correct / submission.possible %></td>
+            </tr>
+          <% end %>
           </table>
         </div>
       </div>
