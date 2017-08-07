@@ -1,7 +1,5 @@
 
 
-<body>
-
   <div id="welcome_page">
 
   <div class="title_block">
@@ -9,14 +7,24 @@
 
 </div>
 <div class="button">
-    <p> One of us? </p><%= button_to "Sign up", new_user_path %>
+    <p> One of us? </p><%= link_to "Sign up", new_user_path %>
   </div>
   <div>
 <h2>TOP SCORES!!!</h2>
 
 
-
+<table class="table table-striped">
+  <tr>
+    <th>User</th>
+    <th>Percent Correct</th>
+  </tr>
+<% @complete_submissions.each do |submission| %>
+  <tr>
+    <td><%= User.find(submission.user_id).name %></td>
+    <td><%= submission.correct / submission.possible %></td>
+  </tr>
+<% end %>
+</table>
 
   </div>
     </div>
-</body>
