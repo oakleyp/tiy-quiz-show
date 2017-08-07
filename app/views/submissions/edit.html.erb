@@ -1,7 +1,9 @@
 <section class="container-fluid">
   <div class="row">
-    <h1 class="text-center">Showing Quiz: <%= @quiz.title %></h1>
+    <h1 class="text-center">Taking Quiz: <%= @quiz.title %></h1>
   </div>
+
+  <!-- This form will be overwritten by quiz_viewer.js -->
   <form id="quiz_form">
   <% @qa_hash.each_with_index do |obj, index| %>
     <div class="row">
@@ -34,5 +36,14 @@
       </div>
     </div>
   <% end %>
+    <div class="row">
+      <button id="submit-btn" type="button" class="btn btn-primary">Submit quiz</button>
+      <button id="save-btn" type="button" class="btn btn-default">Save quiz</button>
+    </div>
   </form>
 </section>
+
+<script type="text/javascript">
+  quizViewer = new QuizViewer(<%= @quiz.qajson %>, document.getElementById('quiz_form'));
+
+</script>

@@ -31,7 +31,7 @@ class QuizzesController < ApplicationController
   end
 
   def show
-    @qa_hash = JSON.parse(@quiz.qajson).to_a
+    @submission = Submission.new
   end
 
   def destroy
