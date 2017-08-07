@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
   before_action :set_quizzes, only: :show
+
 
   def new
     @user = User.new
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
     if @user && (current_user.id == @user.id)
       render 'admin_dash' if current_user.role == 'admin'
       render 'student_dash' if current_user.role == 'user'
-    else 
+    else
       redirect_to login_path, notice: "You do not have permission to view this page."
     end
   end
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end
 
-  def set_quizzes 
+  def set_quizzes
     if current_user && current_user.role == 'admin'
       @unpub_quizzes = Quiz.where({ user_id: current_user.id, published: false })
       @pub_quizzes = Quiz.where({ user_id: current_user.id, published: true })
