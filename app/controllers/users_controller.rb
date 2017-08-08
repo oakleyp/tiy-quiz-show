@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_no_open_submissions
   before_action :set_quizzes, only: :show
 
 
@@ -50,12 +50,26 @@ class UsersController < ApplicationController
       @pub_quizzes = Quiz.where({ user_id: current_user.id, published: true })
       @complete_submissions = Submission.where({ complete: true })
     elsif current_user && current_user.role == 'user'
-      @available_quizzes = Quiz.where({ published: true })
       @complete_submissions = Submission.where({ user_id: current_user.id, complete: true })
+      set_available_quizzes
     end
   end
 
   def user_params
       params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+  end
+
+  def set_available_quizzes
+    published_quizzes = Quiz.where({ published: true }).to_a
+    @available_quizzes = published_quizzes
+    published_quizzes.each_with_index do |quiz, index|
+      @complete_submissions.each do |submission|
+        if submission.quiz_id == quiz.id
+          @available_quizzes.delete_at(index)
+          break
+        end
+      end
+    end
+    
   end
 end

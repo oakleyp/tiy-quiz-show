@@ -32,7 +32,7 @@
             </tr>
             <% @complete_submissions.each do |submission| %>
             <tr>
-              <td><%= Quiz.find(submission.quiz_id).title %></td>
+              <td><a href="<%= submission_path(submission) %>"><%= Quiz.find(submission.quiz_id).title %></a></td>
               <td><%= (submission.correct.to_f / submission.possible.to_f).round(3) * 100 %></td>
             </tr>
             <% end %>

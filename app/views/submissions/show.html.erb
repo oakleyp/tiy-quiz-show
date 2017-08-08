@@ -7,6 +7,7 @@
   <form id="quiz_form">
   <% @qa_hash.each_with_index do |obj, index| %>
     <div class="row">
+      <div class="col-md-12 col-xs-12">
       <div class="question">
         <h5><%= obj["question"] %></h5>
         <div class="radio">
@@ -47,6 +48,7 @@
           </label>
         </div>
 
+      </div>
       </div>
     </div>
   <% end %>
