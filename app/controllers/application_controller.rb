@@ -19,10 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   def require_no_open_submissions
-    require_user
-    #Hopefully there can only ever be one open submission
-    @open_submission = Submission.where({  user_id: current_user.id, complete: false }).first
-    redirect_to edit_submission_path(@open_submission) if @open_submission
+    if current_user && current_user.role == "user"
+      #Hopefully there can only ever be one open submission
+      @open_submission = Submission.where({  user_id: current_user.id, complete: false }).first
+      redirect_to edit_submission_path(@open_submission) if @open_submission
+    end
   end
 
   def json_to_hasharray(jsonstr)
