@@ -46,17 +46,17 @@ class SubmissionsController < ApplicationController
       @submission[:possible] = qajson_array.count
       if @submission.save
         render :show, notice: "Quiz has been submitted successfully."
-      else 
+      else
         render :edit, notice: "Error submitting quiz."
       end
-    else 
+    else
       render :edit, notice: "Error submitting quiz."
     end
   end
 
   def show
    @quiz = Quiz.find(@submission[:quiz_id])
-   @qa_hash = json_to_hasharray(@quiz.qajson)
+   @qa_hash = json_to_hasharray(@submission.qajson)
   end
 
   def destroy
