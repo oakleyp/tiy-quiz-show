@@ -77,8 +77,6 @@ class SubmissionsController < ApplicationController
   def count_json_correct(qajson_array)
     result = 0
     qajson_array.each do |hash|
-        p hash
-        printf("\n\n");
         if hash["selection"] == hash["correct"] then result += 1 end
     end
     puts result
