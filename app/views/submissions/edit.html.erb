@@ -3,35 +3,40 @@
     <h1 class="text-center">Taking Quiz: <%= @quiz.title %></h1>
   </div>
 
-  <!-- This form will be overwritten by quiz_viewer.js -->
-  <form id="quiz_form">
+  <div id="quiz_form">
   <% @qa_hash.each_with_index do |obj, index| %>
     <div class="row">
       <div class="question">
         <h5><%= obj["question"] %></h5>
-        <div class="radio">
-          <label>
-            <input name="answer<%= index %>" type="radio">
-            <%= obj["answers"][0] %>
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input name="answer<%= index %>" type="radio">
-            <%= obj["answers"][1] %>
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input name="answer<%= index %>" type="radio">
-            <%= obj["answers"][2] %>
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input name="answer<%= index %>" type="radio">
-            <%= obj["answers"][3] %>
-          </label>
+        <div class="answersq<%= index %>">
+          <div class="radio">
+            <label>
+              <input name="answer<%= index %>" type="radio" value="<%= obj["answers"][0] %>"
+              <%= "checked" if obj["selection"] == obj["answers"][0] %>>
+              <%= obj["answers"][0] %>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input name="answer<%= index %>" type="radio" value="<%= obj["answers"][1] %>"
+              <%= "checked" if obj["selection"] == obj["answers"][1] %>>
+              <%= obj["answers"][1] %>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input name="answer<%= index %>" type="radio" value="<%= obj["answers"][2] %>"
+              <%= "checked" if obj["selection"] == obj["answers"][2] %>>
+              <%= obj["answers"][2] %>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input name="answer<%= index %>" type="radio" value="<%= obj["answers"][3] %>"
+              <%= "checked" if obj["selection"] == obj["answers"][3] %>>
+              <%= obj["answers"][3] %>
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -40,10 +45,19 @@
       <button id="submit-btn" type="button" class="btn btn-primary">Submit quiz</button>
       <button id="save-btn" type="button" class="btn btn-default">Save quiz</button>
     </div>
-  </form>
+  </div>
 </section>
 
 <script type="text/javascript">
-  quizViewer = new QuizViewer(<%= @quiz.qajson %>, document.getElementById('quiz_form'));
+  submitBtn = document.getElementById('submit-btn');
+  saveBtn = document.getElementById('save-btn');
+  quizViewer = new QuizViewer('<%= raw(@qa_hash.to_json) %>', document.getElementById('quiz_form'));
 
+  submitBtn.addEventListener('click', function(event) {
+    quizViewer.submitQuiz(`<%= submission_path(@submission) %>`, <%= @quiz.id %>, `<%= token_tag nil %>`);
+  });
+
+  saveBtn.addEventListener('click', function(event) {
+    quizViewer.saveQuiz(`<%= submission_path(@submission) %>`, <%= @quiz.id %>, `<%= token_tag nil %>`);
+  })
 </script>
