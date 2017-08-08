@@ -1,7 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :require_user
-  before_action :require_admin, only: [:show, :index]
-  #before_action :require_no_open_submissions, only: :create
+  before_action :require_admin, only: :index
+  before_action :require_no_open_submissions, only: [:create, :show]
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
 
   # New is implemented in quizzes#show method
@@ -24,10 +24,10 @@ class SubmissionsController < ApplicationController
 
       if(@submission.save)
         render :edit
-      else 
+      else
         redirect_to user_path(current_user), notice: "Error creating new submission."
       end
-    else 
+    else
       redirect_to user_path(current_user), notice: "Invalid quiz ID."
     end
   end
@@ -41,20 +41,25 @@ class SubmissionsController < ApplicationController
   def update
     @quiz = Quiz.find(@submission[:quiz_id])
     if @submission.update(submission_params)
-      qajson_array = json_to_hasharray(@submission.qajson)
-      @submission[:correct] = count_json_correct(qajson_array)
-      @submission[:possible] = qajson_array.count
+      @qa_hash= json_to_hasharray(@submission.qajson)
+      @submission[:correct] = count_json_correct(@qa_hash)
+      @submission[:possible] = @qa_hash.count
       if @submission.save
         render :show, notice: "Quiz has been submitted successfully."
-      else 
+      else
         render :edit, notice: "Error submitting quiz."
       end
-    else 
+    else
       render :edit, notice: "Error submitting quiz."
     end
   end
 
   def show
+   @quiz = Quiz.find(@submission[:quiz_id])
+   @qa_hash = json_to_hasharray(@submission.qajson)
+   puts "@qa_hash: ---------> "
+   p @qa_hash
+   p "\n\n"
   end
 
   def destroy
@@ -63,7 +68,7 @@ class SubmissionsController < ApplicationController
   def index
   end
 
-  private 
+  private
 
   def submission_params
     params.require(:submission).permit(:quiz_id, :qajson, :complete)
