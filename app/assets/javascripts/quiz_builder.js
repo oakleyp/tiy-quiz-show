@@ -134,7 +134,8 @@ class QuizBuilder {
         let newobj = {
           "question": question.replace(/[&<>"'`=\/]/g, ''),
           "answers": cleananswers,
-          "correct": correct.replace(/[&<>"'`=\/]/g, '')
+          "correct": correct.replace(/[&<>"'`=\/]/g, ''),
+          "selection": ""
         }
 
         qa_objects.push(newobj);
