@@ -1,3 +1,48 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+h2, h3{
+  text-align: center;
+}
+
+.join-us{
+  margin: 3vw;
+}
+.btn{
+  width: 200px;
+  height: 100px;
+}
+.top-scores{
+  font-weight: 200;
+  font-size: 4vw;
+  opacity: 0.5;
+  border-bottom: 2px dashed black;
+  margin-bottom: 3vw;
+  padding-bottom: 2vw;
+  margin-left: 4vw;
+  margin-right: 3vw;
+}
+
+th{
+  font-size: 3vw;
+  font-weight: lighter;
+}
+
+#join{
+  padding-top: 2vw;
+  font-size: 3vw;
+}
+
+h3{
+
+  border-top: 2px dashed black;
+  opacity: 0.5;
+}
+
+#button-text{
+  font-size: 2vw;
+}
