@@ -24,10 +24,10 @@ class SubmissionsController < ApplicationController
 
       if(@submission.save)
         render :edit
-      else 
+      else
         redirect_to user_path(current_user), notice: "Error creating new submission."
       end
-    else 
+    else
       redirect_to user_path(current_user), notice: "Invalid quiz ID."
     end
   end
@@ -46,15 +46,17 @@ class SubmissionsController < ApplicationController
       @submission[:possible] = qajson_array.count
       if @submission.save
         render :show, notice: "Quiz has been submitted successfully."
-      else 
+      else
         render :edit, notice: "Error submitting quiz."
       end
-    else 
+    else
       render :edit, notice: "Error submitting quiz."
     end
   end
 
   def show
+   @quiz = Quiz.find(@submission[:quiz_id])
+   @qa_hash = json_to_hasharray(@submission.qajson)
   end
 
   def destroy
@@ -63,7 +65,7 @@ class SubmissionsController < ApplicationController
   def index
   end
 
-  private 
+  private
 
   def submission_params
     params.require(:submission).permit(:quiz_id, :qajson, :complete)

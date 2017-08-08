@@ -66,10 +66,8 @@ qajson: '[{"question":"What is Sheldons job?","answers":["Theoretical Physicist"
 Submission.create(
   user_id: 2,
   quiz_id: 1,
-  complete: false,
+  complete: true,
   correct: 0,
   possible: 3,
-  qajson: '[{"question":"Who is the current U.S. President?","answers":["George Clooney","Mark Wahlberg","Donald Trump","Sarah Palin"],"correct":"Donald Trump","selection":""},{"question":"What color is the sky?","answers":["Green","Blue","Turquoise","Magenta"],"correct":"Blue","selection":""},{"question":"What is ruby","answers":["A language","A gem","A sport","An airline"],"correct":"A gem","selection":""}]'
+  qajson: '[{"question":"Who is the current U.S. President?","answers":["George Clooney","Mark Wahlberg","Donald Trump","Sarah Palin"],"correct":"Donald Trump","selection":"Sarah Palin"},{"question":"What color is the sky?","answers":["Green","Blue","Turquoise","Magenta"],"correct":"Blue","selection":"magenta"},{"question":"What is ruby","answers":["A language","A gem","A sport","An airline"],"correct":"A gem","selection":"A sport"}]'
 )
-
-

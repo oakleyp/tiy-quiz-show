@@ -1,3 +1,5 @@
+
+
 <section class="container-fluid">
   <div class="row">
     <h1 class="text-center">Showing Quiz: <%= @quiz.title %></h1>
@@ -31,6 +33,20 @@
             <%= obj["answers"][3] %>
           </label>
         </div>
+        <div class="btn btn-success">
+          <label>
+            <input name="correct<%= index %>"id="correct_answer" type="radio">
+            <%= obj["correct"] %>
+          </label>
+        </div>
+
+        <div class="btn btn-info">
+          <label>
+            <name="user_answer<%= index %>" type="select">
+            <%= obj["selection"] %>
+          </label>
+        </div>
+
       </div>
     </div>
   <% end %>
