@@ -17,8 +17,10 @@ h2, h3{
   font-size: 4vw;
   opacity: 0.5;
   border-bottom: 2px dashed black;
+  border-top: 2px dashed black;
   margin-bottom: 3vw;
   padding-bottom: 2vw;
+  padding-top: 2vw;
   margin-left: 4vw;
   margin-right: 3vw;
 }
@@ -26,10 +28,12 @@ h2, h3{
 th{
   font-size: 3vw;
   font-weight: lighter;
+  background-color: rgb(24, 188, 156);
 }
 
-#join{
-  padding-top: 2vw;
+#sub-text{
+  padding-top: 0vw;
+  padding-bottom: 3vw !important;
   font-size: 3vw;
 }
 
@@ -50,4 +54,56 @@ h3{
 
 #navbar {
     margin-bottom: 0;
+}
+
+header{
+  text-align:center;
+  background:#18BC9C;
+  color:#fff;
+  padding-top: 10vw;
+  padding-bottom: 3vw;
+}
+
+header .container{
+  padding-top:100px;
+  padding-bottom:50px;
+}
+
+.title{
+  font-size: 6vw;
+  padding-bottom: 3vw;
+}
+#join{
+  font-size: 3vw;
+  padding-top: 2vw;
+}
+
+td{
+  font-size: 2vw;
+  opacity: 0.5;
+}
+
+#sign-up{
+  padding-top: 1vw;
+  font-size: 3vw;
+  opacity: 0.9;
+  background-color: rgb(24, 188, 156);
+  border-radius: 10%;
+}
+
+a{
+  opacity: .5;
+}
+
+// .star-lite{
+//     padding:0;
+//     border:none;
+//     border-top:solid 5px;
+//     text-align:center;
+//     max-width:250px;
+//     margin:25px auto 30px
+//   }
+
+.welcome-table{
+  background-color: grey;
 }
