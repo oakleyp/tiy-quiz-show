@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        redirect_to '/login'
+        redirect_to '/login', notice: "The email and password combination you entered is not correct. Please try again."
       end
   end
 

@@ -48,28 +48,16 @@ class UsersController < ApplicationController
     if current_user && current_user.role == 'admin'
       @unpub_quizzes = Quiz.where({ user_id: current_user.id, published: false })
       @pub_quizzes = Quiz.where({ user_id: current_user.id, published: true })
-      @complete_submissions = Submission.where({ complete: true })
+      @complete_submissions = Submission.where({ complete: true }).sort_by(&:updated_at) .reverse
     elsif current_user && current_user.role == 'user'
       @complete_submissions = Submission.where({ user_id: current_user.id, complete: true })
-      set_available_quizzes
+      @available_quizzes = Quiz.where({ published: true }).to_a
+      @top_submissions = Submission.where({ user_id: current_user.id, complete: true })
+                                    .sort_by {|submission| submission.correct.to_f/submission.possible.to_f} .reverse
     end
   end
 
   def user_params
       params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
-  end
-
-  def set_available_quizzes
-    published_quizzes = Quiz.where({ published: true }).to_a
-    @available_quizzes = published_quizzes
-    published_quizzes.each_with_index do |quiz, index|
-      @complete_submissions.each do |submission|
-        if submission.quiz_id == quiz.id
-          @available_quizzes.delete_at(index)
-          break
-        end
-      end
-    end
-    
   end
 end
