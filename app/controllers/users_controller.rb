@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     if current_user && current_user.role == 'admin'
       @unpub_quizzes = Quiz.where({ user_id: current_user.id, published: false })
       @pub_quizzes = Quiz.where({ user_id: current_user.id, published: true })
-      @complete_submissions = Submission.where({ complete: true }).sort_by(&:updated_at) .reverse
+      @complete_submissions = Submission.where({ complete: true }).sort_by(&:updated_at) .reverse .take(10)
     elsif current_user && current_user.role == 'user'
       @complete_submissions = Submission.where({ user_id: current_user.id, complete: true })
       @available_quizzes = Quiz.where({ published: true }).to_a

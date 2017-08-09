@@ -2,12 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .ruby {
- background-image: url(http://iwanttolearnruby.com/images/ruby-quiz.png);
+ background: url(http://iwanttolearnruby.com/images/ruby-quiz.png) repeat-x center top;
  width: 100vw;
- height: 25vh;
+ height: 29vh;
  margin-top: -4vh;
- margin-bottom: -13vh;
+ padding-top: 3vh;
+ margin-bottom: 5vh;
+ color: #FFF;
+ text-shadow: 1px 1px #333;
+ z-index: -2;
 }
+
 
 .quiz-edit-form .main-form-row {
   margin-bottom: 3vh;
@@ -16,4 +21,9 @@
 .quiz-edit-form input {
   margin: 0;
   width: 30%;
+}
+
+.result-text {
+  font-size: 2em;
+  font-weight: bold;
 }
