@@ -1,4 +1,8 @@
+<div class="ruby">
 
+</div>
+
+<div class="Whole_body">
 
 <section class="container-fluid">
   <div class="row">
@@ -36,14 +40,15 @@
         </div>
         <div class="btn btn-success">
           <label>
-            <input name="correct<%= index %>"id="correct_answer" type="radio">
+            <name="correct<%= index %>"id="correct_answer" type="checked"> Correct Answer <br><br>
             <%= obj["correct"] %>
           </label>
         </div>
 
         <div class="btn btn-info">
           <label>
-            <name="user_answer<%= index %>" type="select">
+            <name="user_answer<%= index %>" type="select">Your Answer
+            <br><br>
             <%= obj["selection"] %>
           </label>
         </div>
@@ -55,4 +60,8 @@
   </form>
 </section>
 
-<p>This will show a submission's graded results</p>
+<p class="text-center">
+Your Score is:
+ <%=(@submission.correct.to_i / @submission.possible.to_i) %>
+ </p>
+</div>

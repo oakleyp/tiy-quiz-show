@@ -35,7 +35,7 @@
       <% @complete_submissions.each do |submission| %>
       <tr>
         <td><%= User.find(submission.user_id).name %></td>
-        <td><%= submission.correct / submission.possible %></td>
+        <td><%=submission.correct / submission.possible %></td>
       </tr>
       <% end %>
     </table>
