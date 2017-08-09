@@ -2,14 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// div {
-//   margin: 3vh 0;
-// }
-
 #quiz_form input {
   margin: 3vh 0;
 }
 
 #quiz_form .question-input-wrapper .question-input {
   width: 80%;
+}
+
+#quiz_form #quiz_title {
+  width: 50%;
 }

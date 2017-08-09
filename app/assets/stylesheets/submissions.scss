@@ -2,10 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-label {
-  display: flex;
+.quiz-edit-form .main-form-row {
+  margin-bottom: 3vh;
 }
 
-label input {
-  margin-right: 15px;
+.quiz-edit-form input {
+  margin: 0;
+  width: 30%;
 }
+

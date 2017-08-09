@@ -3,9 +3,9 @@
     <h1 class="text-center">Taking Quiz: <%= @quiz.title %></h1>
   </div>
 
-  <div id="quiz_form">
+  <div id="quiz_form" class="quiz-edit-form">
   <% @qa_hash.each_with_index do |obj, index| %>
-    <div class="row">
+    <div class="row main-form-row">
       <div class="col-md-12 col-xs-12">
         <div class="question">
           <h5><%= obj["question"] %></h5>
