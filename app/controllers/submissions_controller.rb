@@ -45,7 +45,9 @@ class SubmissionsController < ApplicationController
       @submission[:correct] = count_json_correct(@qa_hash)
       @submission[:possible] = @qa_hash.count
       if @submission.save
-        render :show, notice: "Quiz has been submitted successfully."
+        if @submission[:complete]
+          render :show, notice: "Quiz has been submitted successfully."
+        else render :edit, notice: "Quiz progress has been saved successfully." end
       else
         render :edit, notice: "Error submitting quiz."
       end
@@ -57,9 +59,6 @@ class SubmissionsController < ApplicationController
   def show
    @quiz = Quiz.find(@submission[:quiz_id])
    @qa_hash = json_to_hasharray(@submission.qajson)
-   puts "@qa_hash: ---------> "
-   p @qa_hash
-   p "\n\n"
   end
 
   def destroy

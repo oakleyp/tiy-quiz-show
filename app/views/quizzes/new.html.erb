@@ -1,7 +1,8 @@
+<div class="container container-fluid">
+  <h1 class=>New Quiz</h1>
 
-<h1>New Quiz</h1>
-
-<%= render 'form', quiz: @quiz %>
+  <%= render 'form', quiz: @quiz %>
+</div>
 
 <script type="text/javascript">
 
@@ -46,7 +47,6 @@
     qajsoninput.setAttribute('name', 'quiz[qajson]');
     qajsoninput.setAttribute('value', quizBuilder.createJSONStrFromForms());
 
-
     newform.appendChild(titleinput);
     newform.appendChild(qajsoninput);
 
@@ -54,7 +54,6 @@
     newform.innerHTML += '<input name="utf8" type="hidden" value="✓">';
     newform.innerHTML += '<input type="hidden" name="_method" value="post">';
     newform.innerHTML += '<%= token_tag nil %>';
-
 
     document.body.appendChild(newform);
     newform.submit();
