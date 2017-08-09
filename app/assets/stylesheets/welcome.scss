@@ -85,10 +85,11 @@ td{
 
 #sign-up{
   padding-top: 1vw;
-  font-size: 3vw;
+  font-size: 2.5vw;
   opacity: 0.9;
   background-color: rgb(24, 188, 156);
   border-radius: 10%;
+  color: white;
 }
 
 a{
@@ -106,4 +107,20 @@ a{
 
 .welcome-table{
   background-color: grey;
+}
+.img-responsive{
+  z-index: 1;
+position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title{
+
+z-index: 100;
+position: absolute;
+left: 45vw;
+ top: 26vw;
+ font-size: 3vw;
 }

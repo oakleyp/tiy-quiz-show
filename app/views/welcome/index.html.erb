@@ -3,7 +3,11 @@
 <div id="welcome_page">
 
   <header>
-    <h1 class="title">Quiz Show</h1>
+    <div class="container-fluid">
+    <img class="img-responsive" src="http://www.youthforum.org/youth-rights-info-tool/wp-content/themes/yfj-youthrightsinfotool/img/svg/title-7.svg" alt="" width="494" height="426">
+  </div>
+
+    <h2 class="title">SHOW</h2>
     <hr class="star-light">
     <span id="sub-text" class="skills">check your brain</span>
   </header>
@@ -25,7 +29,7 @@
       <% @complete_submissions.each do |submission| %>
       <tr>
         <td><%= User.find(submission.user_id).name %></td>
-        <td><%= submission.correct / submission.possible %></td>
+        <td><%= (submission.correct.to_f / submission.possible.to_f).round(3) * 100 %></td>
       </tr>
       <% end %>
     </table>
