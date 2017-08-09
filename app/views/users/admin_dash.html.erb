@@ -52,15 +52,15 @@
 
         <div class="col-md-4 col-xs-4">
           <h4 class="text-center">Recent Submissions</h4>
-          <table class="table table-striped">
+          <table class="table table-striped table-bordered">
             <tr>
               <th>Quiz</th>
               <th>User</th>
-              <th>Percent Correct</th>
+              <th>Score</th>
             </tr>
             <% @complete_submissions.each do |submission| %>
             <tr>
-              <td><%= Quiz.find(submission.quiz_id).title %></td>
+              <td><a href="<%= submission_path(submission) %>"><%= Quiz.find(submission.quiz_id).title %></a></td>
               <td><%= User.find(submission.user_id).name %></td>
               <td><%= (submission.correct.to_f / submission.possible.to_f).round(3) * 100 %></td>
             </tr>

@@ -1,58 +1,43 @@
-
-
 <section class="container-fluid">
-  <div class="row">
-    <h1 class="text-center">Showing Quiz: <%= @quiz.title %></h1>
+  <div class="row ruby">
+    <h1 class="text-center">Showing results for: <%= @quiz.title %></h1>
+    <p class="text-center result-text">
+    Your Score is:
+    <%=((@submission.correct.to_f / @submission.possible.to_f).round(3) * 100.0).to_s + "%" %>
+    </p>
   </div>
+
   <form id="quiz_form">
   <% @qa_hash.each_with_index do |obj, index| %>
     <div class="row">
       <div class="col-md-12 col-xs-12">
-      <div class="question">
-        <h5><%= obj["question"] %></h5>
-        <div class="radio">
-          <label>
-            <input name="answer<%= index %>" type="radio">
-            <%= obj["answers"][0] %>
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input name="answer<%= index %>" type="radio">
-            <%= obj["answers"][1] %>
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input name="answer<%= index %>" type="radio">
-            <%= obj["answers"][2] %>
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input name="answer<%= index %>" type="radio">
-            <%= obj["answers"][3] %>
-          </label>
-        </div>
-        <div class="btn btn-success">
-          <label>
-            <input name="correct<%= index %>"id="correct_answer" type="radio">
-            <%= obj["correct"] %>
-          </label>
-        </div>
+        <div class="question">
+          <h5><%= obj["question"] %></h5>
+          <ul>
+            <li><%= obj["answers"][0] %></li>
+            <li><%= obj["answers"][1] %></li>
+            <li><%= obj["answers"][2] %></li>
+            <li><%= obj["answers"][3] %></li>
+          </ul>
+          <span class="btn btn-info btn-xs">Correct Answer:
+              <%= obj["correct"] %>
+          </span>
 
-        <div class="btn btn-info">
-          <label>
-            <name="user_answer<%= index %>" type="select">
-            <%= obj["selection"] %>
-          </label>
-        </div>
+          <% if obj["selection"] == obj["correct"] %>
+          <span class="btn btn-success btn-xs">Your Answer:
+              <%= obj["selection"] %>
+          </span>
+          <% else %>
+          <span class="btn btn-danger btn-xs">Your Answer:
+              <%= obj["selection"] %>
+          </span>
+          <% end %>
 
-      </div>
+        </div>
       </div>
     </div>
+    <br>
   <% end %>
   </form>
 </section>
 
-<p>This will show a submission's graded results</p>
