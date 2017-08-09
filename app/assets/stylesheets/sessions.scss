@@ -1,3 +1,48 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#email, #password{
+  margin-left: 9vw;
+  width: 18vw;
+  height: 3vw;
+  font-size: 2vw;
+  color: white;
+  font-weight: lighter;
+  background: rgb(192, 192, 192);
+  font-weight: lighter;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.background-login form label{
+  margin-left: 2vw;
+  color: white;
+  font-weight: lighter;
+  font-size: 3vw;
+}
+
+.background-login form{
+  background-color: rgb(24, 188, 156);
+  border-radius: 10%;
+  width: 35vw;
+  margin-bottom: 4vw;
+  padding-top: 2vw;
+  margin-left: 30vw;
+  margin-top: 4vw;
+}
+
+.background-login input{
+  margin-bottom: 2vw;
+}
+
+.background-login  .actions{
+  margin-left: 12vw;
+  padding: 0vw;
+  font-weight: lighter;
+}
+
+.background-login{
+  background-image: url('https://s-media-cache-ak0.pinimg.com/originals/97/63/53/976353d83be6638169aad1ad06a00f96.png');
+  padding-top: 2vw;
+  padding-bottom: 15vw;
+}

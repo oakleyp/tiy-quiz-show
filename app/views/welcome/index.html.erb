@@ -1,38 +1,35 @@
 
 
-<div id="welcome_page">
 
   <header>
     <div class="container-fluid">
-    <img class="img-responsive" src="http://www.youthforum.org/youth-rights-info-tool/wp-content/themes/yfj-youthrightsinfotool/img/svg/title-7.svg" alt="" width="494" height="426">
-  </div>
-
+      <img class="img-responsive" src="http://www.youthforum.org/youth-rights-info-tool/wp-content/themes/yfj-youthrightsinfotool/img/svg/title-7.svg" alt="" width="494" height="426">
+    </div>
     <h2 class="title">SHOW</h2>
     <hr class="star-light">
     <span id="sub-text" class="skills">check your brain</span>
   </header>
 
-   <div class="container join-us">
+  <div class="welcome_page">
+    <div class="container join-us">
       <h3 id='join' class="lead"> JOIN US? </h3>
         <div class="text-center" >
           <a href="<%=new_user_path%>" class="btn btn-default" id="sign-up" role="button">SIGN UP</a>
         </div>
+    </div>
   </div>
 
-    <h2 class="top-scores">TOP SCORES!!!</h2>
+  <h2 class="top-scores">TOP SCORES!!!</h2>
 
-    <table class="table table-striped welcome-table">
-      <tr>
-        <th>User</th>
-        <th>Percent Correct</th>
-      </tr>
+  <table class="table table-striped welcome-table">
+    <tr>
+      <th>User</th>
+      <th>Percent Correct</th>
+    </tr>
       <% @complete_submissions.each do |submission| %>
-      <tr>
-        <td><%= User.find(submission.user_id).name %></td>
-        <td><%= (submission.correct.to_f / submission.possible.to_f).round(3) * 100 %></td>
-      </tr>
+        <tr>
+          <td><%= User.find(submission.user_id).name %></td>
+          <td><%= (submission.correct.to_f / submission.possible.to_f).round(3) * 100 %></td>
+        </tr>
       <% end %>
-    </table>
-
-
-</div>
+  </table>
