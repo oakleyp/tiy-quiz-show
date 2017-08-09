@@ -3,31 +3,25 @@
 <div id="welcome_page">
 
   <header>
-       <div class="container" id="maincontent" tabindex="-1">
-           <div class="row">
-               <div class="col-lg-12">
-                   <img class="img-responsive" src="" alt="">
-                   <div class="intro-text">
-                       <h1 class="name">Quiz Project Title goes here</h1>
-                       <hr class="star-light">
-                       <span id="join" class="skills">funny thing here</span>
+    <div class="container-fluid">
+    <img class="img-responsive" src="http://www.youthforum.org/youth-rights-info-tool/wp-content/themes/yfj-youthrightsinfotool/img/svg/title-7.svg" alt="" width="494" height="426">
+  </div>
 
-                   </div>
-               </div>
-           </div>
-       </div>
-   </header>
+    <h2 class="title">SHOW</h2>
+    <hr class="star-light">
+    <span id="sub-text" class="skills">check your brain</span>
+  </header>
 
    <div class="container join-us">
-      <h3 id='join' class="lead"> join us? </h3>
+      <h3 id='join' class="lead"> JOIN US? </h3>
         <div class="text-center" >
-          <button id="button-text" class="btn btn-default" type="submit"><%= link_to "Sign up", new_user_path %></button>
+          <a href="<%=new_user_path%>" class="btn btn-default" id="sign-up" role="button">SIGN UP</a>
         </div>
   </div>
 
     <h2 class="top-scores">TOP SCORES!!!</h2>
 
-    <table class="table table-striped">
+    <table class="table table-striped welcome-table">
       <tr>
         <th>User</th>
         <th>Percent Correct</th>
@@ -35,7 +29,7 @@
       <% @complete_submissions.each do |submission| %>
       <tr>
         <td><%= User.find(submission.user_id).name %></td>
-        <td><%=submission.correct / submission.possible %></td>
+        <td><%= (submission.correct.to_f / submission.possible.to_f).round(3) * 100 %></td>
       </tr>
       <% end %>
     </table>
