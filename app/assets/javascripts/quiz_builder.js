@@ -150,10 +150,4 @@ class QuizBuilder {
     console.log(JSON.stringify(qa_objects));
     return JSON.stringify(qa_objects);
   }
-
-
-
-
-
-
 }
