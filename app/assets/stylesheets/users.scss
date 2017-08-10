@@ -9,6 +9,7 @@
   padding-bottom: 3vw;
   margin-top: 3vw;
   margin-left: 20vw;
+  padding-left: 2vw;
 }
 
 .form-group{
@@ -19,9 +20,7 @@
 
 .background-signup .actions{
   padding: 2vw;
-  margin-left: 6vw;
-  font-size: 2vw;
-
+  font-size: 2em;
 }
 
 .background-signup .btn{
@@ -54,4 +53,9 @@
 
 .background-signup label{
   width: 30vw;
+  margin: 2vh 0;
+}
+
+.user-new-form input {
+  width: 90%;
 }

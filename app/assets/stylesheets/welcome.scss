@@ -5,10 +5,15 @@ h2, h3{
   text-align: center;
 }
 
-.btn{
-  width: 200px;
-  height: 100px;
+.welcome-page {
+  margin-top: -5vh;
 }
+
+// .welcome-page .btn{
+//   width: 200px;
+//   height: 100px;
+// }
+
 .join-us{
   margin: 3vw;
 }
@@ -26,7 +31,7 @@ h2, h3{
   margin-right: 3vw;
 }
 
-th{
+.welcome-page th{
   font-size: 3vw;
   font-weight: lighter;
   background-color: rgb(24, 188, 156);
@@ -38,7 +43,7 @@ th{
   font-size: 3vw;
 }
 
-h3{
+.welcome-page h3{
 
   border-top: 2px dashed black;
   opacity: 0.5;
@@ -52,9 +57,9 @@ h3{
   margin-top:  0vw;
 }
 
-#navbar {
-    margin-bottom: 0;
-}
+// #navbar {
+//     margin-bottom: 0;
+// }
 
 header{
   text-align:center;
@@ -74,7 +79,7 @@ header .container{
   padding-top: 2vw;
 }
 
-td{
+.welcome-page td{
   font-size: 2vw;
   opacity: 0.5;
 }
@@ -88,7 +93,7 @@ td{
   color: white;
 }
 
-a{
+.welcome-page a{
   opacity: .5;
 }
 

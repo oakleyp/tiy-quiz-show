@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get '/register', to: 'users#new', as: 'register'
 
+  post '/users/new' => 'users#create'
+
   root to: 'welcome#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
