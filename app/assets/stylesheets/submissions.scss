@@ -19,8 +19,16 @@
 }
 
 .quiz-edit-form input {
-  margin: 0;
-  width: 30%;
+  margin: 0 3vw;
+  display: inline;
+}
+
+.quiz-edit-form .radio span {
+  display: inline;
+}
+
+.quiz-edit-form label {
+  display: flex;
 }
 
 .result-text {

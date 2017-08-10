@@ -10,35 +10,19 @@
       <div class="col-md-12 col-xs-12">
         <div class="question">
           <h5><%= obj["question"] %></h5>
-          <div class="answersq<%= index %>">
-            <div class="radio">
-              <label>
-                <input name="answer<%= index %>" type="radio" value="<%= obj["answers"][0] %>"
-                <%= "checked" if obj["selection"] == obj["answers"][0] %>>
-                <%= obj["answers"][0] %>
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input name="answer<%= index %>" type="radio" value="<%= obj["answers"][1] %>"
-                <%= "checked" if obj["selection"] == obj["answers"][1] %>>
-                <%= obj["answers"][1] %>
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input name="answer<%= index %>" type="radio" value="<%= obj["answers"][2] %>"
-                <%= "checked" if obj["selection"] == obj["answers"][2] %>>
-                <%= obj["answers"][2] %>
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input name="answer<%= index %>" type="radio" value="<%= obj["answers"][3] %>"
-                <%= "checked" if obj["selection"] == obj["answers"][3] %>>
-                <%= obj["answers"][3] %>
-              </label>
-            </div>
+          <div class="answersq<%= index %>">   
+            <span><input name="answer<%= index %>" type="radio" value="<%= obj["answers"][0] %>"
+            <%= "checked" if obj["selection"] == obj["answers"][0] %>>&nbsp;&nbsp;<%= obj["answers"][0] %></span>
+            <br>
+            <span><input name="answer<%= index %>" type="radio" value="<%= obj["answers"][1] %>"
+            <%= "checked" if obj["selection"] == obj["answers"][1] %>>&nbsp;&nbsp;<%= obj["answers"][1] %></span>
+            <br>
+            <span><input name="answer<%= index %>" type="radio" value="<%= obj["answers"][2] %>"
+            <%= "checked" if obj["selection"] == obj["answers"][2] %>>&nbsp;&nbsp;<%= obj["answers"][2] %></span>
+            <br>
+            <span><input name="answer<%= index %>" type="radio" value="<%= obj["answers"][3] %>"
+            <%= "checked" if obj["selection"] == obj["answers"][3] %>>&nbsp;&nbsp;<%= obj["answers"][3] %></span>
+            <br>
           </div>
         </div>
       </div>

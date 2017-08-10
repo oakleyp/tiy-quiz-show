@@ -90,7 +90,7 @@ class QuizViewer {
       this.postForm(path, formdata, rails_auth_key);
 
     } else {
-      if (confirm('Error: One more questions were left unanswered. Please complete all questions before pressing submit.')) {
+      if (confirm('Note: One more questions were left unanswered. Press OK to submit anyway.')) {
         let formdata = {
           'submission[qajson]': JSON.stringify(qajson),
           'submission[complete]': true,
